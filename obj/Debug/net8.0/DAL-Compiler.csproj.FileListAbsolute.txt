@@ -1,0 +1,15 @@
+c:\Users\Megaport\Desktop\C\DAL-Compiler\bin\Debug\net8.0\DAL-Compiler.exe
+C:\Users\Megaport\Desktop\C\DAL-Compiler\bin\Debug\net8.0\DAL-Compiler.deps.json
+C:\Users\Megaport\Desktop\C\DAL-Compiler\bin\Debug\net8.0\DAL-Compiler.runtimeconfig.json
+c:\Users\Megaport\Desktop\C\DAL-Compiler\bin\Debug\net8.0\DAL-Compiler.dll
+c:\Users\Megaport\Desktop\C\DAL-Compiler\bin\Debug\net8.0\DAL-Compiler.pdb
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.AssemblyInfoInputs.cache
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.AssemblyInfo.cs
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.csproj.CoreCompileInputs.cache
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.sourcelink.json
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.dll
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\refint\DAL-Compiler.dll
+c:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.pdb
+C:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\DAL-Compiler.genruntimeconfig.cache
+C:\Users\Megaport\Desktop\C\DAL-Compiler\obj\Debug\net8.0\ref\DAL-Compiler.dll
