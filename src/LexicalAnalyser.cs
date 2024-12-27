@@ -3,11 +3,15 @@ public class LexicalAnalyser {
     public static string[] keywords = new string[]{"Algorithme","Entrées","Sortie","Déclaration","retourner"};
     public static char[] separators = new char[]{'(',',',')',':'};
     public static string[] types = new string[]{"entier"};
+    public static string[] function_type = new string[]{"Algorithme","Procédure","Fonction"};
     public static Boolean isBuiltIn(string s){
         return isInside(binfuncts,s);
     }
     public static Boolean isKeyword(string s){
         return isInside(keywords,s);
+    }
+    public static Boolean isFunctionType(string s){
+        return isInside(function_type,s);
     }
     private static Boolean isInside(string[] container,string elm){
         Boolean b = false;

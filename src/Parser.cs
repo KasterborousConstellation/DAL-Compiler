@@ -46,13 +46,25 @@ public class Parser {
             error("L'entete de la fonction est malformée. Le séparateur ',' est manquant.");
         }
         if(separator.getValue()!=":"){
-            error("Séparateur attendu: ':'.");
+            error("L'entete de la fonction est malformée. Séparateur attendu: ':'.");
         }
         Token.Token identifier = lineToken[2];
         if(identifier.getType()!=Token.TokenType.identifier){
             error("L'entete de la fonction est malformée. Le nom de la fonction n'est pas un identifieur valide.");
         }
-        FunctionNode node = new FunctionNode(identifier.getValue());
+        FunctionType type= FunctionType.Algo;
+        switch(lineToken[0].getValue()){
+            case "Algorithme":
+                type = FunctionType.Algo;
+            break;
+            case "Fonction":
+                type = FunctionType.Func;
+            break;
+            case "Procédure":
+                type = FunctionType.Func;
+            break;
+        }
+        FunctionNode node = new FunctionNode(identifier.getValue(),type);
         return node;
     }
     public ParseTree.RootNode buildTree(){
@@ -60,7 +72,6 @@ public class Parser {
         ParseTree.RootNode root = new ParseTree.RootNode();
         List<Token.Token> line_tokens = new List<Token.Token>();
         Boolean fct_template = true;
-        
         while(peek()!=null){
             while(peek()!=null && peek().getType()!=Token.TokenType.endl){
                 line_tokens.Add(consume());
@@ -74,16 +85,15 @@ public class Parser {
             }
             Token.Token first_token = line_tokens[0];
             if(first_token.getType() == Token.TokenType.keyword
-            && first_token.getValue() == "Algorithme"
+            && LexicalAnalyser.isFunctionType(first_token.getValue())
             ){
                 //We now we are creating a function node
                 FunctionNode fnode = createFunction(line_tokens);
                 root.addChildren(fnode);
             }
-            //Clear the line, as we are parsing the next.
+            //Clear the line, as we are parsing the next one.
             line_tokens.Clear();
         }
-        
         return root;
     }
 }

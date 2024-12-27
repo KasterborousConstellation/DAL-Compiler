@@ -1,15 +1,22 @@
 using System.Linq;
 using System.Reflection.Metadata;
 namespace ParseTree{
-    
+    public enum FunctionType{
+        Algo,
+        Proc,
+        Func
+    }
     public enum NodeType{
         N_litteral,
         N_operator,
         N_function,
-        N_bfunction,
+        N_fctCall,
         N_expr,
         N_root,
-        N_args
+        N_args,
+        N_fctBody,
+        N_fctIn,
+        N_fct_Out,
     }
     public abstract class Node{
         protected NodeType[] allowed = new NodeType[]{};
@@ -53,14 +60,8 @@ namespace ParseTree{
    }
    public class RootNode :Node {
         public RootNode() : base(NodeType.N_root){
-            allowed = new NodeType[]{NodeType.N_bfunction,NodeType.N_function};
+            allowed = new NodeType[]{NodeType.N_function};
         }
-   }
-   public class BinFunctionNode : FunctionNode{
-        public BinFunctionNode(string name) : base(name){
-            this.type = NodeType.N_bfunction;
-        }
-        
    }
    public class ArgumentNode : Node {
         public ArgumentNode() : base(NodeType.N_args){
@@ -69,11 +70,17 @@ namespace ParseTree{
    }
    public class FunctionNode : Node {
         private string name;
-        public FunctionNode(string name) : base(NodeType.N_function){
+        private FunctionType ftype;
+        public FunctionNode(string name,FunctionType ftype) : base(NodeType.N_function){
             this.name = name;
+            this.ftype = ftype;
+            this.allowed = new NodeType[]{NodeType.N_fctBody,NodeType.N_fctIn,NodeType.N_fct_Out};
         }
         public string getName(){
             return name;
+        }
+        public FunctionType GetFunctionType(){
+            return ftype;
         }
    }
 }
