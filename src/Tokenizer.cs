@@ -29,7 +29,7 @@ public class Tokenizer{
         if(m_p>=size){
             return;
         }else{
-            buffer.Append(content[m_p]);
+            buffer.Append(content[m_p++]);
         }
     }
     private Boolean isVoid(char c){
@@ -42,6 +42,9 @@ public class Tokenizer{
     }
     private void reset(){
         m_p = 0;
+    }
+    private void discard(){
+        m_p++;
     }
     public List<Token.Token> tokenize(){
         List<Token.Token> tokens = new List<Token.Token>();
@@ -62,12 +65,46 @@ public class Tokenizer{
                     type = Token.TokenType.bin_func;
                 }else if(LexicalAnalyser.isKeyword(name)){
                     type = Token.TokenType.keyword;
+                }else if(LexicalAnalyser.isTypeRef(name)){
+                    type = Token.TokenType.typeref;
                 }else{
                     type = Token.TokenType.identifier;
                 }
-                Token.Token token = new Token.Token(type,name,0);
+                Token.Token token = new Token.Token(type,name);
                 tokens.Add(token);
+            }else if (current == '\r'){
+                consume();
+                if(isVoid(peek())||peek()!='\n'){
+                    Console.WriteLine("Error, malformed file: Carriage error.");
+                    System.Environment.Exit(1);
+                }
+                consume();
+                collapse();
+                tokens.Add(new Token.Token(TokenType.endl,""));
+            }else if(Char.IsWhiteSpace(current)){
+                //Not taking into account for now
+                discard();
+            }else if(current == '\n'){
+                consume();
+                collapse();
+                tokens.Add(new Token.Token(TokenType.endl,""));
+            }else if(LexicalAnalyser.isSeparator(current)){    
+                consume();
+                tokens.Add(new Token.Token(TokenType.separator,collapse()));
+            }else if(Char.IsDigit(current)){
+                consume();
+                while(!isVoid(peek()) && Char.IsDigit(peek())){
+                    consume();
+                }
+                string name = collapse();
+                tokens.Add(new Token.Token(TokenType.int_lit,name));
+            }else{
+                discard();
             }
+        }
+        //Automatically adds a endl if it's the end of the file
+        if(tokens[tokens.Count-1].getType()!=TokenType.endl){
+            tokens.Add(new Token.Token(TokenType.endl,""));
         }
         return tokens;
     }

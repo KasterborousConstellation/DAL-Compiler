@@ -4,23 +4,21 @@ namespace Token{
         bin_func,
         endl,
         identifier,
-        keyword
+        keyword,
+        unknown,
+        separator,
+        typeref
     }
     public class Token{
     
     private TokenType type;
-    private int idlvl;
     private string value;
-    public Token(TokenType type,string value,int idlvl){
+    public Token(TokenType type,string value){
          this.type = type;
-         this.value = value;
-         this.idlvl = idlvl;         
+         this.value = value;     
     }
     public TokenType getType(){
         return type;
-    }
-    public int getIdentationLvl(){
-        return idlvl;
     }
     public string getValue(){
         return value;
