@@ -1,5 +1,5 @@
 Algorithme : main
-Entrées: 
-Sortie:
-Déclarations: valeur : entier 
+Entrées: t : entier, a : réel
+Sortie: entier
+Déclaration: valeur : entier , p :réel
     sortir(1)

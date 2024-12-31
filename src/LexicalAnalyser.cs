@@ -1,8 +1,10 @@
+using ParseTree;
+
 public class LexicalAnalyser {
     public static string[] binfuncts = new string[]{"sortir"};
     public static string[] keywords = new string[]{"Algorithme","Entrées","Sortie","Déclaration","retourner"};
     public static char[] separators = new char[]{'(',',',')',':'};
-    public static string[] types = new string[]{"entier"};
+    public static string[] types = new string[]{"entier","réel","booléen"};
     public static string[] function_type = new string[]{"Algorithme","Procédure","Fonction"};
     public static Boolean isBuiltIn(string s){
         return isInside(binfuncts,s);
@@ -39,5 +41,14 @@ public class LexicalAnalyser {
             i++;
         }
         return b;
+    }
+    public static Types convert(string s){
+        return s switch
+        {
+            "entier" => Types.T_int,
+            "booléen" => Types.T_boolean,
+            "réel" => Types.T_real,
+            _ => Types.T_int,
+        };
     }
 }

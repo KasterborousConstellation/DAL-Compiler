@@ -28,7 +28,7 @@ $$
 \end{align*}\\
 $$
 ## Lexique
-La table suivante définit les termes utilisés dans la grammaire.
+La table suivante définit les termes utilisés dans la grammaire.  
 $$
 \begin{align*}
     \text{Prog} &: \text{Programme}\\
@@ -41,5 +41,5 @@ $$
     \text{Lit} &: \text{Litteral}\\
     \text{Oper} &: \text{Operation}\\
     \text{Optr} &: \text{Operateur}
-\end{align*}
+\end{align*}\\
 $$

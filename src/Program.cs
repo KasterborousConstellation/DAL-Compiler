@@ -17,6 +17,8 @@ namespace DAL_Compiler{
             List<Token.Token> tokens = tokenizer.tokenize();
             Parser parser = new Parser(tokens);
             RootNode root = parser.buildTree();
+            int a = root.getChildrenCount();
+            Console.Write(a);
         }
     }
 }

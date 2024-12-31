@@ -1,4 +1,4 @@
 # DAL Compiler Architecture
-The DAL compiler architecture is based on the standard architecture of a compiler. For simplicity reasons (inter-operability, hardware issues...), the DAL compiler uses C as an intermediate language to compile DAL files.\\
-First the DAL compiler does the usual stuff (tokenization, parse tree growing...) and outputs an intermediate C file. This intermediate C file is then compiled using GCC to produce a proper executable. This method has the benefit of avoiding already tackled problems like on compile optimizations or hardware dependent compilation.\\
+The DAL compiler architecture is based on the standard architecture of a compiler. For simplicity reasons (inter-operability, hardware issues...), the DAL compiler uses C as an intermediate language to compile DAL files.  
+First the DAL compiler does the usual stuff (tokenization, parse tree growing...) and outputs an intermediate C file. This intermediate C file is then compiled using GCC to produce a proper executable. This method has the benefit of avoiding already tackled problems like on compile optimizations or hardware dependent compilation.  
 See also: grammar.md
